@@ -1,6 +1,3 @@
-# Weather
-It's a Weather application for MeLi Test
-
 # Uso
 Nos dirigimos a http://ip/api/main para obtener el pronostico hasta diez años desde el dia de la fecha o bien http://ip/api/main/n donde n es un entero entre [1;3650] y que retorna el clima del dia especificado por parametro
  
