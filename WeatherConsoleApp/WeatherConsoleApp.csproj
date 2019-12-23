@@ -42,9 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\CartesianCoordinates.cs" />
     <Compile Include="Classes\Enum.cs" />
     <Compile Include="Classes\Movement.cs" />
     <Compile Include="Classes\Planet.cs" />
+    <Compile Include="Classes\PolarCoordinates.cs" />
     <Compile Include="Classes\Position.cs" />
     <Compile Include="Classes\SolarSystem.cs" />
     <Compile Include="Program.cs" />
