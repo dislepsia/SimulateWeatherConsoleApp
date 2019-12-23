@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("WeatherConsoleApp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Hewlett-Packard")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("WeatherConsoleApp")]
-[assembly: AssemblyCopyright("Copyright © Hewlett-Packard 2019")]
+[assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // El siguiente GUID sirve como id. de typelib si este proyecto se expone a COM.
-[assembly: Guid("9efd8082-7872-4849-80ed-8df2a916ea02")]
+[assembly: Guid("0ea85227-5278-4cab-98e7-f3a396cced2a")]
 
 // La información de versión de un ensamblado consta de los cuatro valores siguientes:
 //

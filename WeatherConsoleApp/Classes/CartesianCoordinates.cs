@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Weather.Classes;
 
-namespace WeatherService.Classes
+namespace Weather.Classes
 {
     public class CartesianCoordinates
     {
