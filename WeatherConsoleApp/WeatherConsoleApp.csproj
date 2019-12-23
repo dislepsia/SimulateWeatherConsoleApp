@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Classes\CartesianCoordinates.cs" />
     <Compile Include="Classes\Enum.cs" />
+    <Compile Include="Classes\MathUsefulFuntions.cs" />
     <Compile Include="Classes\Movement.cs" />
     <Compile Include="Classes\Planet.cs" />
     <Compile Include="Classes\PolarCoordinates.cs" />
