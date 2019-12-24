@@ -22,7 +22,7 @@ namespace WeatherConsoleApp
                 new Planet(1000, Weather.Classes.Enum.COUNTER_CLOCKWISE, 5)
             });
 
-            Console.WriteLine("Generar Pronostico");
+            Console.WriteLine("Generar Pronostico...");
 
             report = WeatherReport.GenerateWeatherReport(system, 3650);
 
