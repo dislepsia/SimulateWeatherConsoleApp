@@ -21,6 +21,12 @@ namespace Weather.Classes
 
         private void InitMappings()
         {
+            BsonClassMap.RegisterClassMap<DayReport>(cm =>
+            {
+                cm.MapMember(c => c.Day);
+                cm.MapMember(c => c.Weather);
+            });
+
             BsonClassMap.RegisterClassMap<WeatherReport>(cm =>
             {
                 cm.MapMember(c => c.DraughtDays);
@@ -28,12 +34,7 @@ namespace Weather.Classes
                 cm.MapMember(c => c.MaxRainIntensity);
                 cm.MapMember(c => c.RainDays);
                 cm.MapMember(c => c.OptimumDays);
-            });
-
-            BsonClassMap.RegisterClassMap<DayReport>(cm =>
-            {
-                cm.MapMember(c => c.Day);
-                cm.MapMember(c => c.Weather);
+                cm.MapMember(c => c.WeatherPerDay);
             });
 
             BsonClassMap.RegisterClassMap<Weather>(cm =>
