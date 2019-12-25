@@ -12,16 +12,16 @@ namespace Weather.Classes
         public double MaxRainIntensity { get; }
         public int MaxIntensityDay { get; }
         public int OptimumDays { get; }
-        //public List<DayReport> WeatherPerDay { get; }
+        public List<DayReport> WeatherPerDay { get; }
 
-        private WeatherReport(int draughtDays, int rainDays, double maxRainIntensity, int maxIntensityDay, int optimumDays/*, List<DayReport> weatherPerDay*/)
+        private WeatherReport(int draughtDays, int rainDays, double maxRainIntensity, int maxIntensityDay, int optimumDays, List<DayReport> weatherPerDay)
         {
             DraughtDays = draughtDays;
             RainDays = rainDays;
             MaxRainIntensity = Math.Round(maxRainIntensity, 2);
             MaxIntensityDay = maxIntensityDay;
             OptimumDays = optimumDays;
-            //WeatherPerDay = weatherPerDay;
+            WeatherPerDay = weatherPerDay;
         }
 
         public static WeatherReport GenerateWeatherReport(SolarSystem system, int daysToSimulate)
@@ -55,7 +55,7 @@ namespace Weather.Classes
             var maxRainIntensity = weatherList.Max(r => r.Weather.RainIntensity);
             var maxIntensityDay = weatherList.Where(r => r.Weather.RainIntensity == maxRainIntensity).First().Day;
 
-            return new WeatherReport(draughtCount, rainCount, maxRainIntensity, maxIntensityDay, optimumCount/*, weatherList*/);
+            return new WeatherReport(draughtCount, rainCount, maxRainIntensity, maxIntensityDay, optimumCount, weatherList);
         }
     }
 }

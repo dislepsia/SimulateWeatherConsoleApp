@@ -14,42 +14,13 @@ namespace Weather.Classes
 
         public ReportUploader(WeatherReport report)
         {
+
             this.report = report;
-            
-        }
-
-        public void Upload()
-        {
-            var client = new MongoClient("mongodb+srv://Angkor:Casares7735@cluster0-weh6k.gcp.mongodb.net/TestMeLi?retryWrites=true&w=majority");
-            var db = client.GetDatabase("TestMeLi");
-
-            //Subo el reporte
-            var pronosticoLargoPlazo = db.GetCollection<WeatherReport>("Pronostico");
-            var pronosticoDelDia = db.GetCollection<DayReport>("Days");
-
-            //Delete all the register created
-            pronosticoLargoPlazo.DeleteMany(doc => true);
-            pronosticoDelDia.DeleteMany(doc => true);
-
-            //Mapping fields
             InitMappings();
-
-            pronosticoLargoPlazo.InsertOne(report);
-
-            //Subo los dias
-            //var pronosticoDelDia = db.GetCollection<DayReport>("Days");
-            //pronosticoDelDia.DeleteMany(doc => true);
-            //pronosticoDelDia.InsertMany(report.WeatherPerDay);
         }
 
         private void InitMappings()
         {
-            BsonClassMap.RegisterClassMap<DayReport>(cm =>
-            {
-                cm.MapMember(c => c.Day);
-                cm.MapMember(c => c.Weather);
-            });
-
             BsonClassMap.RegisterClassMap<WeatherReport>(cm =>
             {
                 cm.MapMember(c => c.DraughtDays);
@@ -57,7 +28,13 @@ namespace Weather.Classes
                 cm.MapMember(c => c.MaxRainIntensity);
                 cm.MapMember(c => c.RainDays);
                 cm.MapMember(c => c.OptimumDays);
-                //cm.MapMember(c => c.WeatherPerDay);
+                cm.MapMember(c => c.WeatherPerDay);
+            });
+
+            BsonClassMap.RegisterClassMap<DayReport>(cm =>
+            {
+                cm.MapMember(c => c.Day);
+                cm.MapMember(c => c.Weather);
             });
 
             BsonClassMap.RegisterClassMap<Weather>(cm =>
@@ -65,6 +42,29 @@ namespace Weather.Classes
                 cm.MapMember(c => c.Type).SetSerializer(new EnumSerializer<Weather.WeatherType>(BsonType.Int32));
                 cm.MapMember(c => c.RainIntensity);
             });
+        }
+
+        public void Upload()
+        {
+            var client = new MongoClient("mongodb+srv://Angkor:Casares7735@cluster0-weh6k.gcp.mongodb.net/TestMeLi?retryWrites=true&w=majority");
+            var db = client.GetDatabase("TestMeLi");
+
+            UploadSummary(db);
+            UploadDays(db);
+        }
+
+        private void UploadSummary(IMongoDatabase db)
+        {
+            var pronostico = db.GetCollection<WeatherReport>("Pronostico");
+            pronostico.DeleteMany(doc => true);
+            pronostico.InsertOne(report);
+        }
+
+        private void UploadDays(IMongoDatabase db)
+        {
+            var col = db.GetCollection<DayReport>("Days");
+            col.DeleteMany(doc => true);
+            col.InsertMany(report.WeatherPerDay);
         }
     }
 }
