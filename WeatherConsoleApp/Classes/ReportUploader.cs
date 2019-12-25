@@ -50,7 +50,6 @@ namespace Weather.Classes
             var db = client.GetDatabase("TestMeLi");
 
             UploadSummary(db);
-            UploadDays(db);
         }
 
         private void UploadSummary(IMongoDatabase db)
@@ -58,13 +57,6 @@ namespace Weather.Classes
             var pronostico = db.GetCollection<WeatherReport>("Pronostico");
             pronostico.DeleteMany(doc => true);
             pronostico.InsertOne(report);
-        }
-
-        private void UploadDays(IMongoDatabase db)
-        {
-            var col = db.GetCollection<DayReport>("Days");
-            col.DeleteMany(doc => true);
-            col.InsertMany(report.WeatherPerDay);
         }
     }
 }
