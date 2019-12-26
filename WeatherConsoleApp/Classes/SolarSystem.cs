@@ -98,7 +98,7 @@ namespace Weather.Classes
             //Add the last length
             perimeter += (item - planetCoordinates[0]).Length();
 
-            return perimeter;
+            return Math.Round(perimeter, 2);
         }
     }
 }

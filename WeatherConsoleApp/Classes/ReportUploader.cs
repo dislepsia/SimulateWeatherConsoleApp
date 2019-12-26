@@ -19,6 +19,11 @@ namespace Weather.Classes
             InitMappings();
         }
 
+        public ReportUploader()
+        {
+
+        }
+
         private void InitMappings()
         {
             BsonClassMap.RegisterClassMap<WeatherReport>(cm =>
@@ -49,14 +54,19 @@ namespace Weather.Classes
             var client = new MongoClient("mongodb+srv://Angkor:Casares7735@cluster0-weh6k.gcp.mongodb.net/TestMeLi?retryWrites=true&w=majority");
             var db = client.GetDatabase("TestMeLi");
 
-            UploadSummary(db);
-        }
-
-        private void UploadSummary(IMongoDatabase db)
-        {
             var pronostico = db.GetCollection<WeatherReport>("Pronostico");
             pronostico.DeleteMany(doc => true);
             pronostico.InsertOne(report);
+        }
+
+        public void Delete()
+        {
+            var client = new MongoClient("mongodb+srv://Angkor:Casares7735@cluster0-weh6k.gcp.mongodb.net/TestMeLi?retryWrites=true&w=majority");
+            var db = client.GetDatabase("TestMeLi");
+
+            var pronostico = db.GetCollection<WeatherReport>("Pronostico");
+            pronostico.DeleteMany(doc => true);
+            //pronostico.InsertOne(report);
         }
     }
 }
