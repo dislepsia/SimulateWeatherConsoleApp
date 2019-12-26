@@ -18,3 +18,7 @@ tema utilice una entidad (Sistema Solar) que alberga una lista con tres planetas
 da en ese día particular.
 
 Para modelar el clima utilice el patrón Factory Method para construir Climas válidos. Todos poseen una intensidad de lluvia igual a cero excepto obviamente en los días lluviosos.
+
+Consideré utilizar una base de datos NoSql. Fue un desafío ya que jamás utilice una base de este estilo. En particular elegí MongoDb porque es una de las más populares y pude observar que tiene drivers para muchos lenguajes. Asi mismo existe una una solución Cloud de Mongo, Atlas, que es fácil de utilizar y configurar.
+
+Además al no tener esquema, suele ser mucho más fácil persistir datos del modelo de clases y siendo únicamente una API de consulta una base de datos NoSql se adaptaba bien.
