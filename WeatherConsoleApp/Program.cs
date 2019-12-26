@@ -18,7 +18,7 @@ namespace WeatherConsoleApp
             Console.WriteLine("Bienvenido a WeatherConsoleApp!");
             Console.WriteLine("Ingrese la accion a realizar:");
             Console.WriteLine("1-Carga de datos a la base de datos Mongo Atlas");
-            Console.WriteLine("2-Eliminar datos");
+            Console.WriteLine("2-Eliminar datos (Esto podria alterar el funcionamiento del servicio)");
 
             ConsoleKeyInfo opcion = Console.ReadKey(true);
 

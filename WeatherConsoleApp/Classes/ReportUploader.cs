@@ -28,7 +28,7 @@ namespace Weather.Classes
         {
             BsonClassMap.RegisterClassMap<WeatherReport>(cm =>
             {
-                cm.MapMember(c => c.DraughtDays);
+                cm.MapMember(c => c.DroughtDays);
                 cm.MapMember(c => c.MaxIntensityDay);
                 cm.MapMember(c => c.MaxRainIntensity);
                 cm.MapMember(c => c.RainDays);

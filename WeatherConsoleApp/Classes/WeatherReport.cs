@@ -7,16 +7,16 @@ namespace Weather.Classes
 {
     public class WeatherReport
     {
-        public int DraughtDays { get; }
+        public int DroughtDays { get; }
         public int RainDays { get; }
         public double MaxRainIntensity { get; }
         public int MaxIntensityDay { get; }
         public int OptimumDays { get; }
         public List<DayReport> WeatherPerDay { get; }
 
-        private WeatherReport(int draughtDays, int rainDays, double maxRainIntensity, int maxIntensityDay, int optimumDays, List<DayReport> weatherPerDay)
+        private WeatherReport(int droughtDays, int rainDays, double maxRainIntensity, int maxIntensityDay, int optimumDays, List<DayReport> weatherPerDay)
         {
-            DraughtDays = draughtDays;
+            DroughtDays = droughtDays;
             RainDays = rainDays;
             MaxRainIntensity = Math.Round(maxRainIntensity, 2);
             MaxIntensityDay = maxIntensityDay;
@@ -27,7 +27,7 @@ namespace Weather.Classes
         public static WeatherReport GenerateWeatherReport(SolarSystem system, int daysToSimulate)
         {
             var weatherList = new List<DayReport>();
-            int draughtCount = 0;
+            int droughtCount = 0;
             int rainCount = 0;
             int optimumCount = 0;
             for (int day = 1; day <= daysToSimulate; day++)
@@ -38,7 +38,7 @@ namespace Weather.Classes
                 switch (weatherToday.Type)
                 {
                     case Weather.WeatherType.DROUGHT:
-                        draughtCount++;
+                        droughtCount++;
                         break;
                     case Weather.WeatherType.RAINY:
                         rainCount++;
@@ -55,7 +55,7 @@ namespace Weather.Classes
             var maxRainIntensity = weatherList.Max(r => r.Weather.RainIntensity);
             var maxIntensityDay = weatherList.Where(r => r.Weather.RainIntensity == maxRainIntensity).First().Day;
 
-            return new WeatherReport(draughtCount, rainCount, maxRainIntensity, maxIntensityDay, optimumCount, weatherList);
+            return new WeatherReport(droughtCount, rainCount, maxRainIntensity, maxIntensityDay, optimumCount, weatherList);
         }
     }
 }
